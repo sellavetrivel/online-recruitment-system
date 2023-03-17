@@ -1,0 +1,46 @@
+hr.m-0
+h5.pt-2.pb-2.pl-2.m-0.bg-primary.text-white.sticky-top Education
+hr.m-0
+div.mt-2.ml-2
+    if education.length
+        each ed, index in education
+            div.mb-5.mt-4
+                h5 Education - ##{index + 1}
+                form.mb-5(method="POST" action="/cv/education/" + ed.id + "/")
+                    div.form-group
+                        input.form-control(type="text" placeholder="Ex: St. Xaviers College" name="school" value=(ed.school ? ed.school : ""))
+                        small.text-muted. 
+                            School/college name goes here.
+                    div.form-group
+                        textarea.form-control(type="text" placeholder="Ex: B. Tech. (Computer Science and Engineering)" name="description" value=(ed.description ? ed.description : "")) #{ed.description}
+                        small.text-muted. 
+                            Add your major, minor, CGPA, etc here.
+                    div.form-group
+                        input.form-control(type="text" placeholder="" name="dateFrom" value=(ed.dateFrom ? ed.dateFrom : "") data-provide="datepicker" data-date-format="yyyy-mm-dd")
+                        small.text-muted. 
+                            The date you started studying here.
+                    div.form-group
+                        input.form-control(type="text" placeholder="" name="dateTo" value=(ed.dateTo ? ed.dateTo : "") data-provide="datepicker" data-date-format="yyyy-mm-dd")
+                        small.text-muted. 
+                            The date you ended studying here. Leave blank if you are currently studying here.
+                    button.btn.btn-primary.text-uppercase.font_size__12(type="submit" name="save") SAVE
+                    button.btn.btn-danger.text-uppercase.font_size__12.ml-2(type="submit" name="delete") DELETE
+    p You can add information pertaining to your education using the form below.
+    form(method="POST" action="/cv/education/")
+        div.form-group
+            input.form-control(type="text" placeholder="Ex: St. Xaviers College" name="school")
+            small.text-muted. 
+                School/college name goes here.
+        div.form-group
+            textarea.form-control(placeholder="Ex: B. Tech. (Computer Science and Engineering)" name="description")
+            small.text-muted. 
+                Add your major, minor, CGPA, etc here.
+        div.form-group
+            input.form-control(type="text" placeholder="" name="dateFrom" data-provide="datepicker" data-date-format="yyyy-mm-dd")
+            small.text-muted. 
+                The date you started studying here.
+        div.form-group
+            input.form-control(type="text" placeholder="" name="dateTo" data-provide="datepicker" data-date-format="yyyy-mm-dd")
+            small.text-muted. 
+                The date you ended studying here. Leave blank if you are currently studying here.
+        button.btn.btn-primary.text-uppercase.font_size__12(type="submit") ADD

@@ -1,0 +1,23 @@
+extend ../layout
+
+block title
+    title Sign In | Online Recruitment System
+block content
+    include ../navbar
+    div.container.pt-5
+        div.row
+            div.col-md-6.offset-md-3
+                h2 Sign In
+                div.pb-2
+                    small.
+                        We have sent you an email containg a 6-letter OTP.
+                        Enter that OTP below to sign in.
+                form(method="POST" action="/accounts/email-verification/")
+                    div.form-group
+                        input#text.form-control(type="text" placeholder="******" name="code" value=(code ? code : "") minlength=6 maxlength=6 required)
+                        small.text-muted. 
+                            OTP goes here.
+                        if errors && errors.code
+                            div
+                                small.text-danger #{errors.code}
+                    button.btn.btn-primary.text-uppercase.font_size__12(type="submit") Verify & sign in

@@ -1,0 +1,27 @@
+extend ../layout
+
+block title
+    title Your Dashboard | Online Recruitment System
+block content
+    include ../navbar
+    div.container.pt-5
+        div.row
+            div.col-md-6.offset-md-3
+                div.mb-5
+                    h2 Your dashboard
+                    hr
+                    p
+                        i.fas.fa-user 
+                        span.ml-2 #{user.firstName} #{user.lastName}
+                            if user.isJobSeeker
+                                span.ml-1 (Job Seeker)
+                            else
+                                span.ml-1 (Employer)
+                    p
+                        i.fas.fa-envelope 
+                        span.ml-2 #{user.email}
+                    hr
+                    if user.isJobSeeker
+                        p You can find and edit your CV 
+                            a(href='/cv/') here.
+                        hr

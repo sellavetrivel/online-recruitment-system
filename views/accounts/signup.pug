@@ -1,0 +1,43 @@
+extend ../layout
+
+block title
+    title Sign Up | Online Recruitment System
+block content
+    include ../navbar
+    div.container.pt-5
+        div.row
+            div.col-md-6.offset-md-3
+                h2 Sign Up
+                form(method="POST" action="/accounts/signup/")
+                    div.form-group
+                        input.form-control(type="text" placeholder="John" name="firstName" value=(input && input.firstName ? input.firstName: "") minlength=1 maxlength=255)
+                        small.text-muted Your first name goes here.
+                        if errors && errors.firstName
+                            div
+                                small.text-danger #{errors.firstName}
+                    div.form-group
+                        input.form-control(type="text" placeholder="Doe" name="lastName" value=(input && input.lastName ? input.lastName : "") minlength=1 maxlength=255)
+                        small.text-muted Your last name goes here.
+                        if errors && errors.lastName
+                            div
+                                small.text-danger #{errors.lastName}
+                    div.form-group
+                        input.form-control(type="email" placeholder="johndoe@example.com" name="email" value=(input && input.email ? input.email : "") minlength=1 maxlength=255)
+                        small.text-muted Your email address goes here. Make sure it"s correct before submitting the form!
+                        if errors && errors.email
+                            div
+                                small.text-danger #{errors.email}
+                    div.form-check
+                        input#role0.form-check-input(type="radio" name="role" value="0")
+                        label.form-check-label(for="role0") Job Seeker
+                    div.form-check
+                        input#role1.form-check-input(type="radio" name="role" value="1")
+                        label.form-check-label(for="role1") Employer
+                    div.mb-3
+                        small.text-muted.
+                            What are you? If you looking for a job, select "Job Seeker".
+                            If you are a recruiter or an HR personnel, select "Employer".
+                        div
+                            if errors && errors.role
+                                small.text-danger #{errors.role}
+                    button.btn.btn-primary.text-uppercase.font_size__12(type="submit") Sign up

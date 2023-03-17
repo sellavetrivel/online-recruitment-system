@@ -1,0 +1,30 @@
+hr.mb-0
+h5.pt-2.pb-2.pl-2.m-0.bg-primary.text-white.sticky-top Skills
+hr.m-0
+div.mt-2.ml-2
+    if skills.length
+        each skill, index in skills
+            div.mb-5.mt-4
+                h5 Skill - ##{index + 1}
+                form.mb-5(method="POST" action="/cv/skill/" + skill.id + "/")
+                    div.form-group
+                        input.form-control(type="text" placeholder="Ex: Bootstrap" name="skill" value=(skill.skill ? skill.skill : ""))
+                        small.text-muted.
+                            Skill goes here.
+                    div.form-group
+                        input.form-control(placeholder="Ex: expert" name="proficiency" value=(skill.proficiency ? skill.proficiency : ""))
+                        small.text-muted. 
+                            Add Proficiency goes here. Can be anything. Suggestions: expert, prior experience, 4/5, etc.
+                    button.btn.btn-primary.text-uppercase.font_size__12(type="submit" name="save") SAVE
+                    button.btn.btn-danger.text-uppercase.font_size__12.ml-2(type="submit" name="delete") DELETE
+    p You can add information pertaining to your skills using the form below.
+    form(method="POST" action="/cv/skill/")
+        div.form-group
+            input.form-control(type="text" placeholder="Ex: Bootstrap" name="skill")
+            small.text-muted.
+                Skill goes here.
+        div.form-group
+            input.form-control(placeholder="Ex: expert" name="proficiency")
+            small.text-muted. 
+                Add Proficiency goes here. Can be anything. Suggestions: expert, prior experience, 4/5, etc.
+        button.btn.btn-primary.text-uppercase.font_size__12(type="submit") ADD

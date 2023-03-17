@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+body, pre {
+  font-family: "Lato", sans-serif;
+}
+
+.font_size__12 {
+  font-size: 12px !important;
+}
+
+.font_size__14 {
+  font-size: 14px !important;
+}
+
+.font_size__16 {
+  font-size: 16px !important;
+}
+
+.font_size__18 {
+  font-size: 18px !important;
+}
+
+.font_size__20 {
+  font-size: 20px !important;
+}
+
+.bg-white {
+  background-color: #ffffff !important;
+}
+
+.form-control {
+  border: none;
+  border-bottom: 1px solid #ced4da;
+  border-radius: 0px;
+  padding-left: 0px;
+  padding-bottom: 0px;
+}
+
+.form-control:focus {
+  border-color: #495057;
+  box-shadow: none;
+}
+
+.datepicker {
+  z-index: 99999 !important;
+}

@@ -1,0 +1,71 @@
+extend ../layout
+
+block title
+    title CV | Online Recruitment System
+
+block content
+    div.container.pt-5
+        div.row
+            div.col-md-6.offset-md-3
+                h2 #{jobSeeker.firstName} #{jobSeeker.lastName}
+                h5 #{jobSeeker.profession}
+                
+                if jobSeeker.phoneNumber
+                        span 
+                            i.fas.fa-phone-alt
+                            span.ml-2 #{jobSeeker.phoneNumber}
+                if jobSeeker.email
+                        span.ml-4
+                            i.fas.fa-envelope
+                            span.ml-2 #{jobSeeker.email}
+
+                if experiences.length
+                    div.mt-4
+                        hr.m-0.mb-2
+                        h4 Experience
+                        hr.m-0
+
+                        each experience in experiences
+                            div.mt-2
+                                p.m-0 #{experience.lineOne} #[br] #{experience.lineTwo} #[br]
+                                if experience.dateFrom
+                                    span= moment(experience.dateFrom).format("DD MMMM, YYYY") + ' - '
+                                    if experience.dateTo
+                                        span= moment(experience.dateTo).format("DD MMMM, YYYY")
+                                    else
+                                        span present
+                                if experience.experience
+                                    p.text-muted.font_size__14.pt-0 #{experience.experience}
+
+                if education.length
+                    div.mt-4
+                        hr.m-0.mb-2
+                        h4 Education
+                        hr.m-0
+
+                        each ed in education
+                            div.mt-2
+                                p.m-0 #{ed.school}
+                                if ed.dateFrom
+                                    span= moment(ed.dateFrom).format("DD MMMM, YYYY") + ' - '
+                                    if ed.dateTo
+                                        span= moment(ed.dateTo).format("DD MMMM, YYYY")
+                                    else
+                                        span present
+                                p.m-2
+                                if ed.description
+                                    pre.text-muted.font_size__14.pt-0 #{ed.description}
+                if skills.length
+                    div.mt-4
+                        hr.m-0.mb-2
+                        h4 Skills
+                        hr.m-0
+
+                        div.mt-2
+                            each skill, index in skills
+                                if index == skills.length - 1
+                                    span #{skill.skill} (#{skill.proficiency})
+                                else
+                                    span #{skill.skill} (#{skill.proficiency}), 
+                
+                p.m-5

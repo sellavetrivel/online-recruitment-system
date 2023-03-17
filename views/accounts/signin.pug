@@ -1,0 +1,20 @@
+extend ../layout
+
+block title
+    title Sign In | Online Recruitment System
+block content
+    include ../navbar
+    div.container.pt-5
+        div.row
+            div.col-md-6.offset-md-3
+                h2 Sign In
+                form(method="POST" action="/accounts/signin/")
+                    div.form-group
+                        input#email.form-control(type="email" placeholder="johndoe@example.com" name="email" value=(email ? email : ""))
+                        small.text-muted. 
+                            Your email address goes here. We will send an OTP to your email.
+                            You will need the OTP to sign in!
+                        if errors && errors.email
+                            div
+                                small.text-danger #{errors.email}
+                    button.btn.btn-primary.text-uppercase.font_size__12(type="submit") Send OTP

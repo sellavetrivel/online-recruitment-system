@@ -1,0 +1,39 @@
+extends layout
+
+block title
+    title Search For Candidates | Online Recruitment System
+
+block content
+    include navbar
+    div.container.pt-5
+        div.row
+            div.col-md-12
+                h2 Search For Candidates
+                p.m-3
+                form(method="GET" action="")
+                    div.form-group
+                        input.form-control(type="text" placeholder="HTML, Bootstrap" name="skills" value=(skills ? skills : ""))
+                        small.text-muted Enter the skill(s) required in the candidate here. The list should be comma separated. Ex: HTML, CSS, Bootstrap.
+                    div.form-row
+                        div.form-group.col-md-3
+                            input.form-control(type="number" placeholder="1" name="yearsOfExperience" value=(yearsOfExperience ? yearsOfExperience : ""))
+                            small.text-muted. 
+                                Enter the minimum number of years of experience you want in the candidate.
+                        div.form-group.col-md-9
+                            input.form-control(type="text" placeholder="Bachelor of Technology" name="qualifications" value=(qualifications ? qualifications : ""))
+                            small.text-muted. 
+                                Enter any qualification(s) required in the candidate. The qualifications should be comma separated. #[br] Ex. Bachelor of Technology, MBA.
+                    button.btn.btn-primary.text-uppercase.font_size__12(type="submit") Search
+                hr
+                if candidates
+                    h2 Search Results
+                    span #{candidates.length} candidate(s) found.
+                    hr
+                    p.m-3
+
+                    each candidate, index in candidates
+                        p #{index + 1}.
+                            span.font-weight-bold  #{candidate.firstName} #{candidate.lastName}.
+                            span.ml-2 You can find the CV
+                            a.ml-1(href="/cv/" + candidate.id + "/preview/") here
+                            span .

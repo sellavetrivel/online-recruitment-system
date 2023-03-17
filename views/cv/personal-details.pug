@@ -1,0 +1,55 @@
+hr.m-0
+h5.pt-2.pb-2.pl-2.m-0.bg-primary.text-white.sticky-top Personal Details
+hr.m-0
+div.mt-2.ml-2
+    form(method="POST" action="/cv/personal-details/")
+        div.form-group
+            input.form-control(type="text" placeholder="Ex: John" name="firstName" value=(jobSeeker.firstName ? jobSeeker.firstName : ""))
+            small.text-muted. 
+                Your first name goes here.
+            if errors && errors.firstName
+                div
+                    small.text-danger #{errors.firstName}
+        div.form-group
+            input.form-control(type="text" placeholder="Ex: Doe" name="lastName" value=(jobSeeker.lastName ? jobSeeker.lastName : ""))
+            small.text-muted. 
+                Your last name goes here.
+            if errors && errors.lastName
+                div
+                    small.text-danger #{errors.lastName}
+        div.form-group
+            input.form-control(type="text" placeholder="Ex: Software Engineer" name="profession" value=(jobSeeker.profession ? jobSeeker.profession : ""))
+            small.text-muted. 
+                Your profession goes here.
+            if errors && errors.profession
+                div
+                    small.text-danger #{errors.profession}
+        div.form-group
+            input.form-control(type="number" name="yearsOfExperience" value=(jobSeeker.yearsOfExperience ? jobSeeker.yearsOfExperience : ""))
+            small.text-muted. 
+                Your experience (in years) goes here.
+            if errors && errors.yearsOfExperience
+                div
+                    small.text-danger #{errors.yearsOfExperience}
+        div.form-group
+            input.form-control(type="email" placeholder="Ex: johndoe@example.com" name="email" value=(jobSeeker.email ? jobSeeker.email : ""))
+            small.text-muted. 
+                Your email address goes here.
+            if errors && errors.email
+                div
+                    small.text-danger #{errors.email}
+        div.form-group
+            input.form-control(type="text" placeholder="Ex: +91 70025 89566" name="phoneNumber" value=(jobSeeker.phoneNumber ? jobSeeker.phoneNumber : ""))
+            small.text-muted. 
+                Your phone number goes here.
+            if errors && errors.phoneNumber
+                div
+                    small.text-danger #{errors.phoneNumber}
+        div.form-group
+            input.form-control(type="text" name="dateOfBirth" value=(jobSeeker.dateOfBirth ? jobSeeker.dateOfBirth : "") data-provide="datepicker" data-date-format="yyyy-mm-dd")
+            small.text-muted. 
+                Your date of birth goes here.
+            if errors && errors.dateOfBirth
+                div
+                    small.text-danger #{errors.dateOfBirth}
+        button.btn.btn-primary.text-uppercase.font_size__12(type="submit") SAVE

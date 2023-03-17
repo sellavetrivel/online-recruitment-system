@@ -1,0 +1,21 @@
+extends layout
+
+block title
+  title Online Recruitment System
+
+block content
+  include navbar
+  div.container.pt-5
+    div.row
+      div.col-md-6.offset-md-3
+        h1 Online Recruitment System
+        p A one-stop solution for job seekers and employers!
+        if !user
+          a.btn.btn-primary.text-white.text-uppercase.font_size__12(href="/accounts/signup") Get Started
+        else
+          if user.isJobSeeker
+            hr
+            p Hi #{user.firstName}! #[br] We hope you get the job you want :) #[br] In the meanwhile, you can update your CV #[a(href="/cv/") here].
+          else
+            hr
+            p Hi #{user.firstName}! #[br] We hope you get the candidates you want :) #[br] In the meanwhile, you can search for candidates #[a(href="/candidates-search/") here].

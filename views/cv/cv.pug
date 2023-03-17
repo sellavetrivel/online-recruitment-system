@@ -1,0 +1,46 @@
+extend ../layout
+
+block title
+    title CV | Online Recruitment System
+block preCSS
+    link(
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+        integrity="sha256-siyOpF/pBWUPgIcQi17TLBkjvNgNQArcmwJB8YvkAgg="
+        crossorigin="anonymous"
+    )
+block preJS
+    script(
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"
+        integrity="sha256-bqVeqGdJ7h/lYPq6xrPv/YGzMEb6dNxlfiTUHSgRCp8="
+        crossorigin="anonymous"
+    )
+block content
+    include ../navbar
+    include ../message
+    div.container.pt-5
+        div.row
+            div.col-md-6.offset-md-3
+                h2 Update Your CV
+                p.mb-5 You can find the preview #[a(href="/cv/" + user.id + "/preview/") here].
+
+                include personal-details
+
+                p.m-5
+                p.p-2
+
+                include experiences
+
+                p.m-5
+                p.p-2
+
+                include education
+
+                p.m-5
+                p.p-2
+
+                include skills
+
+                p.m-5
+                p.p-5
+    a.btn.btn-primary.text-uppercase.font_size__12.text-white(href="/cv/" + user.id +"/preview" style="position: fixed; bottom: 10px; right: 20px;") #[i.fas.fa-search.mr-1] Preview

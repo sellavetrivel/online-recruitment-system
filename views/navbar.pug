@@ -1,0 +1,10 @@
+nav.navbar.navbar-expand-lg.navbar-light.bg-white
+    ul.navbar-nav.ml-auto.float-right
+        if user
+            li.nav-item
+                a.nav-link(href='/dashboard/') Dashboard
+            li.nav-item
+                a.nav-link(href='/accounts/signout/') Sign Out
+        else
+            li.nav-item
+                a.nav-link(href='/accounts/signin/') Sign In

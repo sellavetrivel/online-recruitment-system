@@ -1,0 +1,10 @@
+if error && error.length > 0
+    div.alert.alert-danger.alert-dismissible.fade-in(role="alert")
+        button.close(type="button" data-dismiss="alert" aria-label="Close")
+            span(aria-hidden="true") ×
+        p.mb-0= error
+if success && success.length > 0
+    div.alert.alert-success.alert-dismissible.fade-in(role="alert")
+        button.close(type="button" data-dismiss="alert" aria-label="Close")
+            span(aria-hidden="true") ×
+        p.mb-0= success

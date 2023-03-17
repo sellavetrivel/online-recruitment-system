@@ -1,0 +1,54 @@
+hr.mb-0
+h5.pt-2.pb-2.pl-2.m-0.bg-primary.text-white.sticky-top Experience
+hr.m-0
+div.mt-2.ml-2
+    if experiences.length
+        each experience, index in experiences
+            div.mb-5.mt-4
+                h5 Experience - ##{index + 1}
+                form(method="POST" action="/cv/experience/" + experience.id + "/")
+                    div.form-group
+                        input.form-control(type="text" placeholder="Ex: Software Engineer" name="lineOne" value=(experience.lineOne ? experience.lineOne : ""))
+                        small.text-muted. 
+                            Your position goes here.
+                    div.form-group
+                        input.form-control(type="text" placeholder="Ex: Identity Serivices, Amazon" name="lineTwo" value=(experience.lineTwo ? experience.lineTwo : ""))
+                        small.text-muted. 
+                            Company and department goes here.
+                    div.form-group
+                        input.form-control(type="text" placeholder="" name="dateFrom" value=(experience.dateFrom ? experience.dateFrom : "") data-provide="datepicker" data-date-format="yyyy-mm-dd")
+                        small.text-muted. 
+                            The date you started working here.
+                    div.form-group
+                        input.form-control(type="text" placeholder="" name="dateTo" value=(experience.dateTo ? experience.dateTo : "") data-provide="datepicker" data-date-format="yyyy-mm-dd")
+                        small.text-muted. 
+                            The date you ended working here. Leave blank if you are currently employed here.
+                    div.form-group
+                        input.form-control(type="text" placeholder="I worked on implementing OAuth2 across all Amazon applications." name="experience" value=(experience.experience ? experience.experience : ""))
+                        small.text-muted. 
+                            You can describe your responsibilities and achievements here.
+                    button.btn.btn-primary.text-uppercase.font_size__12(type="submit" name="save") SAVE
+                    button.btn.btn-danger.text-uppercase.font_size__12.ml-2(type="submit" name="delete") DELETE
+    p You can add your experiences using the form below.
+    form(method="POST" action="/cv/experience/")
+        div.form-group
+            input.form-control(type="text" placeholder="Ex: Software Engineer" name="lineOne")
+            small.text-muted. 
+                Your position goes here.
+        div.form-group
+            input.form-control(type="text" placeholder="Ex: Identity Serivices, Amazon" name="lineTwo")
+            small.text-muted. 
+                Company and department goes here.
+        div.form-group
+            input.form-control(type="text" placeholder="" name="dateFrom" data-provide="datepicker" data-date-format="yyyy-mm-dd")
+            small.text-muted. 
+                The date you started working here.
+        div.form-group
+            input.form-control(type="text" placeholder="" name="dateTo" data-provide="datepicker" data-date-format="yyyy-mm-dd")
+            small.text-muted. 
+                The date you ended working here. Leave blank if you are currently employed here.
+        div.form-group
+            input.form-control(type="text" placeholder="I worked on implementing OAuth2 across all Amazon applications." name="experience")
+            small.text-muted. 
+                You can describe your responsibilities and achievements here.
+        button.btn.btn-primary.text-uppercase.font_size__12(type="submit") ADD
